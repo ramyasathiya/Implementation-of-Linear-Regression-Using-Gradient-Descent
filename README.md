@@ -9,14 +9,16 @@ To write a program to predict the profit of a city using the linear regression m
 
 ## Algorithm
 
-1.Import pandas, numpy and mathplotlib.pyplot.
 
-2.Trace the best fit line and calculate the cost function.
+1. Initialize Parameters: Start with initial values for parameters \( \theta_0 \) and \( \theta_1 \), and set a learning rate \( \alpha \).
+  
+2. Define Hypothesis: Define the prediction function \( h(x) = \theta_0 + \theta_1 \cdot x \).
+  
+3. Compute Cost: Use Mean Squared Error to calculate the cost function, which shows how well the model fits the data.
 
-3.Calculate the gradient descent and plot the graph for it.
+4. Update Parameters (Gradient Descent): Adjust \( \theta_0 \) and \( \theta_1 \) iteratively by computing their gradients and updating them based on the learning rate to minimize the cost.
 
-4.Predict the profit for two population sizes.
-
+5. Repeat Until Convergence: Continue updating until the cost stabilizes, giving the optimal parameters for the best-fit line.
 ## Program:
 ```
 /*
