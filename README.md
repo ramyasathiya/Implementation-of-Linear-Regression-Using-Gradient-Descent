@@ -26,6 +26,7 @@ RegisterNumber:  212222040130
 ```
 ```
 
+
 import numpy as np
 import pandas as pd
 from sklearn.preprocessing import StandardScaler
@@ -61,7 +62,21 @@ print(f"Predicted value: {pre}")
 ```
 
 ## Output:
-![Screenshot 2024-03-08 144452 new ml](https://github.com/sakthipriyadhanusu/Implementation-of-Linear-Regression-Using-Gradient-Descent/assets/119393194/2933c518-d72c-4405-b34d-3e629b850e68)
+
+![image](https://github.com/user-attachments/assets/bcab0011-be4c-4fc8-b8e8-a139be50fce5)
+```
+![image](https://github.com/user-attachments/assets/08f0b8cc-87e6-49a3-95e4-82fb96748087)
+```
+![image](https://github.com/user-attachments/assets/c37e448b-bc44-4a17-84a5-2407509763f0)
+```
+![image](https://github.com/user-attachments/assets/063d43dd-4cb4-409c-a04a-4e37aad46482)
+```
+![image](https://github.com/user-attachments/assets/a18b426d-7892-40f5-9cb5-f5c5e9663228)
+
+
+
+
+
 
 
 ## Result:
