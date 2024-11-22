@@ -8,77 +8,64 @@ To write a program to predict the profit of a city using the linear regression m
 2. Anaconda – Python 3.7 Installation / Jupyter notebook
 
 ## Algorithm
+1.Data Preprocessing: Load data from a CSV file (50_Startups.csv) using pandas and separate features (X) and target values (y). Convert these values to floating-point numbers for scaling, then apply standard scaling to normalize both features and target values.
 
+2.Add Bias Term to Features: In the linear_regression function, concatenate a column of ones to X1 to add a bias term, creating a new feature matrix, X, with an intercept term for the linear regression model.
 
-1. Initialize Parameters: Start with initial values for parameters \( \theta_0 \) and \( \theta_1 \), and set a learning rate \( \alpha \).
-  
-2. Define Hypothesis: Define the prediction function \( h(x) = \theta_0 + \theta_1 \cdot x \).
-  
-3. Compute Cost: Use Mean Squared Error to calculate the cost function, which shows how well the model fits the data.
+3.Initialize Parameters and Gradient Descent: Initialize theta (parameter vector) to zeros. For a specified number of iterations, perform gradient descent by calculating predictions, computing the error, and updating theta using the learning rate and gradient.
 
-4. Update Parameters (Gradient Descent): Adjust \( \theta_0 \) and \( \theta_1 \) iteratively by computing their gradients and updating them based on the learning rate to minimize the cost.
+4.Model Training: Update theta iteratively to minimize the cost function until the specified number of iterations is reached. This process optimizes theta to fit the scaled feature matrix and target values.
 
-5. Repeat Until Convergence: Continue updating until the cost stabilizes, giving the optimal parameters for the best-fit line.
+5.Prediction with New Data: After training, apply the model to new data. Scale the new input data, append a bias term, and make a prediction by taking the dot product with theta. Finally, transform the scaled prediction back to the original scale for interpretation.
 ## Program:
+
 ```
-/*
+
 Program to implement the linear regression using gradient descent.
-Developed by: Ramya S
+Developed by: RAMYA S
 RegisterNumber:  212222040130
-```
-```
 
-
-import numpy as np
+import numpy as  np
 import pandas as pd
 from sklearn.preprocessing import StandardScaler
-def linear_regression(X1,y,learning_rate=0.1,num_iters=1000):
-    X=np.c_[np.ones(len(X1)),X1]
-    theta=np.zeros(X.shape[1]).reshape(-1,1)
-    for _ in range(num_iters):
-        predictions=(X).dot(theta).reshape(-1,1)
-        errors=(predictions-y).reshape(-1,1)
-        theta=learning=learning_rate*(1/len(X1))*X.T.dot(errors)
-    return theta
+def linear_regression(x1,y,learning_rate=0.01,num_iters=100):
+  X=np.c_[np.ones(len(X1)),x1]
+  theta=np.zeros(X.shape[1]).reshape(-1,1)
+
+  for _ in range(num_iters):
+    predictions=(X).dot(theta).reshape(-1,1)
+    errors=(predictions-y).reshape(-1,1)        
+    theta=learning=learning_rate*(1/len(X1))*X.T.dot(errors)
+  return theta
+
 data=pd.read_csv("50_Startups.csv")
 print(data.head())
 X=(data.iloc[1:,:-2].values)
 print(X)
 X1=X.astype(float)
-scaler = StandardScaler()
-y = (data.iloc[1:,-1].values).reshape(-1,1)
+scaler=StandardScaler()
+y=(data.iloc[1:,-1].values).reshape(-1,1)
 print(y)
-X1_Scaled = scaler.fit_transform(X1)
-Y1_Scaled = scaler.fit_transform(y)
+X1_Scaled=scaler.fit_transform(X1)
+Y1_Scaled=scaler.fit_transform(y)
 print(X1_Scaled)
 print(Y1_Scaled)
-theta= linear_regression(X1_Scaled,Y1_Scaled)
+theta=linear_regression(X1_Scaled,Y1_Scaled);
+
 new_data=np.array([165349.2,136897.8,471784.1]).reshape(-1,1)
-new_Scaled = scaler.fit_transform(new_data)
+new_Scaled=scaler.fit_transform(new_data)
 prediction=np.dot(np.append(1,new_Scaled),theta)
 prediction=prediction.reshape(-1,1)
 pre=scaler.inverse_transform(prediction)
-print(prediction)
 print(f"Predicted value: {pre}")
-*/
+
 ```
 
 ## Output:
 
-![image](https://github.com/user-attachments/assets/bcab0011-be4c-4fc8-b8e8-a139be50fce5)
+![Screenshot 2024-08-31 140350](https://github.com/user-attachments/assets/18385998-acfe-4b9f-a34a-6db9f81e7c00)
 
-![image](https://github.com/user-attachments/assets/08f0b8cc-87e6-49a3-95e4-82fb96748087)
-
-![image](https://github.com/user-attachments/assets/c37e448b-bc44-4a17-84a5-2407509763f0)
-
-![image](https://github.com/user-attachments/assets/063d43dd-4cb4-409c-a04a-4e37aad46482)
-
-![image](https://github.com/user-attachments/assets/a18b426d-7892-40f5-9cb5-f5c5e9663228)
-
-
-
-
-
+![Screenshot 2024-08-31 140603](https://github.com/user-attachments/assets/5d8fadbb-67e8-4c39-b4b9-bf74b3b70e19)
 
 
 ## Result:
