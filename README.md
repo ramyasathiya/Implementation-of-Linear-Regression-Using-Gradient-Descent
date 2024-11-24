@@ -8,15 +8,32 @@ To write a program to predict the profit of a city using the linear regression m
 2. Anaconda – Python 3.7 Installation / Jupyter notebook
 
 ## Algorithm
-1.Data Preprocessing: Load data from a CSV file (50_Startups.csv) using pandas and separate features (X) and target values (y). Convert these values to floating-point numbers for scaling, then apply standard scaling to normalize both features and target values.
+1.Initialize Parameters:
 
-2.Add Bias Term to Features: In the linear_regression function, concatenate a column of ones to X1 to add a bias term, creating a new feature matrix, X, with an intercept term for the linear regression model.
+Start with random values for the model's parameters: the slope (m) and the intercept (b).
+2.Predict Output:
 
-3.Initialize Parameters and Gradient Descent: Initialize theta (parameter vector) to zeros. For a specified number of iterations, perform gradient descent by calculating predictions, computing the error, and updating theta using the learning rate and gradient.
+For each data point (x_i, y_i), calculate the predicted value (y_hat_i) using the current values of m and b:
+y_hat_i = m * x_i + b
+3.Calculate Cost Function (Mean Squared Error):
 
-4.Model Training: Update theta iteratively to minimize the cost function until the specified number of iterations is reached. This process optimizes theta to fit the scaled feature matrix and target values.
+Compute the difference between the predicted value and the actual value for each data point.
+Square the differences and calculate the mean of these squared differences:
+MSE = (1/n) * Σ(y_i - y_hat_i)^2
+4.Calculate Gradients:
 
-5.Prediction with New Data: After training, apply the model to new data. Scale the new input data, append a bias term, and make a prediction by taking the dot product with theta. Finally, transform the scaled prediction back to the original scale for interpretation.
+Compute the partial derivatives of the cost function with respect to m and b:
+∂MSE/∂m = (2/n) * Σ(x_i * (y_hat_i - y_i))
+∂MSE/∂b = (2/n) * Σ(y_hat_i - y_i)
+5.Update Parameters:
+
+Update the values of m and b using the gradient descent update rule:
+m = m - α * ∂MSE/∂m
+b = b - α * ∂MSE/∂b
+Here, α is the learning rate, which controls the step size in the gradient descent.
+6.Repeat Steps 2-5:
+
+Iterate through steps 2-5 multiple times until the cost function converges to a minimum or reaches a specified number of iterations.
 ## Program:
 
 ```
